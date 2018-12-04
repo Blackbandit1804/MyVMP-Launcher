@@ -15,7 +15,7 @@ namespace MyVMP_Launcher
             Helper.Logging.Log("Application start initiated");
             Data.GTA5.Init();
             Data.RAGE.Init();
-            // Data.GVMP.Init();
+            Data.GVMP.Init();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Helper.Logging.Log("Application start finished");
