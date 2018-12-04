@@ -21,10 +21,15 @@ namespace MyVMP_Launcher.Helper
 
                 case "error":
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(string.Format("[INFO] [{0}] {1}", timestamp, message));
+                    Console.WriteLine(string.Format("[ERROR] [{0}] {1}", timestamp, message));
                     break;
 
-                default:
+				case "warning":
+					Console.ForegroundColor = ConsoleColor.Yellow;
+					Console.WriteLine(string.Format("[WARN] [{0}] {1}", timestamp, message));
+					break;
+
+				default:
                     Console.WriteLine(string.Format("[INFO] [{0}] {1}", timestamp, message));
                     break;
             }
