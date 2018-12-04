@@ -54,6 +54,7 @@
     <Compile Include="API\GVMP-Board.cs" />
     <Compile Include="Data\GTA5.cs" />
     <Compile Include="Data\GVMP.cs" />
+    <Compile Include="Data\Links.cs" />
     <Compile Include="Data\RAGE.cs" />
     <Compile Include="Helper\Logging.cs" />
     <Compile Include="MainWindow.cs">
