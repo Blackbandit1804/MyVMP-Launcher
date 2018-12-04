@@ -37,15 +37,15 @@
 			this.lServer = new System.Windows.Forms.Label();
 			this.btnStartGame = new System.Windows.Forms.Button();
 			this.pSidebar = new System.Windows.Forms.Panel();
-			this.lblQuickAccess = new System.Windows.Forms.Label();
-			this.lBoard = new System.Windows.Forms.LinkLabel();
-			this.lTSSync = new System.Windows.Forms.LinkLabel();
-			this.lWhitelist = new System.Windows.Forms.LinkLabel();
-			this.lWiki = new System.Windows.Forms.LinkLabel();
-			this.lUCP = new System.Windows.Forms.LinkLabel();
-			this.lDiscord = new System.Windows.Forms.LinkLabel();
-			this.lSupport = new System.Windows.Forms.LinkLabel();
 			this.lTSConnect = new System.Windows.Forms.LinkLabel();
+			this.lSupport = new System.Windows.Forms.LinkLabel();
+			this.lDiscord = new System.Windows.Forms.LinkLabel();
+			this.lUCP = new System.Windows.Forms.LinkLabel();
+			this.lWiki = new System.Windows.Forms.LinkLabel();
+			this.lWhitelist = new System.Windows.Forms.LinkLabel();
+			this.lTSSync = new System.Windows.Forms.LinkLabel();
+			this.lBoard = new System.Windows.Forms.LinkLabel();
+			this.lblQuickAccess = new System.Windows.Forms.Label();
 			this.pTitleBar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbHeader)).BeginInit();
 			this.pSidebar.SuspendLayout();
@@ -157,94 +157,19 @@
 			this.pSidebar.Size = new System.Drawing.Size(200, 342);
 			this.pSidebar.TabIndex = 4;
 			// 
-			// lblQuickAccess
+			// lTSConnect
 			// 
-			this.lblQuickAccess.AutoSize = true;
-			this.lblQuickAccess.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblQuickAccess.ForeColor = System.Drawing.Color.White;
-			this.lblQuickAccess.Location = new System.Drawing.Point(12, 17);
-			this.lblQuickAccess.Name = "lblQuickAccess";
-			this.lblQuickAccess.Size = new System.Drawing.Size(111, 19);
-			this.lblQuickAccess.TabIndex = 0;
-			this.lblQuickAccess.Text = "Schnellzugriff";
-			// 
-			// lBoard
-			// 
-			this.lBoard.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-			this.lBoard.AutoSize = true;
-			this.lBoard.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lBoard.LinkColor = System.Drawing.Color.White;
-			this.lBoard.Location = new System.Drawing.Point(35, 77);
-			this.lBoard.Name = "lBoard";
-			this.lBoard.Size = new System.Drawing.Size(53, 16);
-			this.lBoard.TabIndex = 1;
-			this.lBoard.TabStop = true;
-			this.lBoard.Text = "╚ Forum";
-			// 
-			// lTSSync
-			// 
-			this.lTSSync.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-			this.lTSSync.AutoSize = true;
-			this.lTSSync.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lTSSync.LinkColor = System.Drawing.Color.White;
-			this.lTSSync.Location = new System.Drawing.Point(35, 137);
-			this.lTSSync.Name = "lTSSync";
-			this.lTSSync.Size = new System.Drawing.Size(58, 16);
-			this.lTSSync.TabIndex = 2;
-			this.lTSSync.TabStop = true;
-			this.lTSSync.Text = "╚ TS Sync";
-			// 
-			// lWhitelist
-			// 
-			this.lWhitelist.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-			this.lWhitelist.AutoSize = true;
-			this.lWhitelist.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lWhitelist.LinkColor = System.Drawing.Color.White;
-			this.lWhitelist.Location = new System.Drawing.Point(35, 197);
-			this.lWhitelist.Name = "lWhitelist";
-			this.lWhitelist.Size = new System.Drawing.Size(65, 16);
-			this.lWhitelist.TabIndex = 3;
-			this.lWhitelist.TabStop = true;
-			this.lWhitelist.Text = "╚ Whitelist";
-			// 
-			// lWiki
-			// 
-			this.lWiki.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-			this.lWiki.AutoSize = true;
-			this.lWiki.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lWiki.LinkColor = System.Drawing.Color.White;
-			this.lWiki.Location = new System.Drawing.Point(35, 227);
-			this.lWiki.Name = "lWiki";
-			this.lWiki.Size = new System.Drawing.Size(39, 16);
-			this.lWiki.TabIndex = 4;
-			this.lWiki.TabStop = true;
-			this.lWiki.Text = "╚ Wiki";
-			// 
-			// lUCP
-			// 
-			this.lUCP.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-			this.lUCP.AutoSize = true;
-			this.lUCP.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lUCP.LinkColor = System.Drawing.Color.White;
-			this.lUCP.Location = new System.Drawing.Point(35, 167);
-			this.lUCP.Name = "lUCP";
-			this.lUCP.Size = new System.Drawing.Size(40, 16);
-			this.lUCP.TabIndex = 5;
-			this.lUCP.TabStop = true;
-			this.lUCP.Text = "╚ UCP";
-			// 
-			// lDiscord
-			// 
-			this.lDiscord.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-			this.lDiscord.AutoSize = true;
-			this.lDiscord.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lDiscord.LinkColor = System.Drawing.Color.White;
-			this.lDiscord.Location = new System.Drawing.Point(35, 47);
-			this.lDiscord.Name = "lDiscord";
-			this.lDiscord.Size = new System.Drawing.Size(60, 16);
-			this.lDiscord.TabIndex = 6;
-			this.lDiscord.TabStop = true;
-			this.lDiscord.Text = "╚ Discord";
+			this.lTSConnect.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+			this.lTSConnect.AutoSize = true;
+			this.lTSConnect.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lTSConnect.LinkColor = System.Drawing.Color.White;
+			this.lTSConnect.Location = new System.Drawing.Point(99, 137);
+			this.lTSConnect.Name = "lTSConnect";
+			this.lTSConnect.Size = new System.Drawing.Size(66, 16);
+			this.lTSConnect.TabIndex = 8;
+			this.lTSConnect.TabStop = true;
+			this.lTSConnect.Text = "[ Connect ]";
+			this.lTSConnect.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lTSConnect_LinkClicked);
 			// 
 			// lSupport
 			// 
@@ -258,19 +183,102 @@
 			this.lSupport.TabIndex = 7;
 			this.lSupport.TabStop = true;
 			this.lSupport.Text = "╚ Support";
+			this.lSupport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lSupport_LinkClicked);
 			// 
-			// lTSConnect
+			// lDiscord
 			// 
-			this.lTSConnect.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-			this.lTSConnect.AutoSize = true;
-			this.lTSConnect.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lTSConnect.LinkColor = System.Drawing.Color.White;
-			this.lTSConnect.Location = new System.Drawing.Point(99, 137);
-			this.lTSConnect.Name = "lTSConnect";
-			this.lTSConnect.Size = new System.Drawing.Size(66, 16);
-			this.lTSConnect.TabIndex = 8;
-			this.lTSConnect.TabStop = true;
-			this.lTSConnect.Text = "[ Connect ]";
+			this.lDiscord.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+			this.lDiscord.AutoSize = true;
+			this.lDiscord.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lDiscord.LinkColor = System.Drawing.Color.White;
+			this.lDiscord.Location = new System.Drawing.Point(35, 47);
+			this.lDiscord.Name = "lDiscord";
+			this.lDiscord.Size = new System.Drawing.Size(60, 16);
+			this.lDiscord.TabIndex = 6;
+			this.lDiscord.TabStop = true;
+			this.lDiscord.Text = "╚ Discord";
+			this.lDiscord.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lDiscord_LinkClicked);
+			// 
+			// lUCP
+			// 
+			this.lUCP.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+			this.lUCP.AutoSize = true;
+			this.lUCP.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lUCP.LinkColor = System.Drawing.Color.White;
+			this.lUCP.Location = new System.Drawing.Point(35, 167);
+			this.lUCP.Name = "lUCP";
+			this.lUCP.Size = new System.Drawing.Size(40, 16);
+			this.lUCP.TabIndex = 5;
+			this.lUCP.TabStop = true;
+			this.lUCP.Text = "╚ UCP";
+			this.lUCP.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lUCP_LinkClicked);
+			// 
+			// lWiki
+			// 
+			this.lWiki.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+			this.lWiki.AutoSize = true;
+			this.lWiki.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lWiki.LinkColor = System.Drawing.Color.White;
+			this.lWiki.Location = new System.Drawing.Point(35, 227);
+			this.lWiki.Name = "lWiki";
+			this.lWiki.Size = new System.Drawing.Size(39, 16);
+			this.lWiki.TabIndex = 4;
+			this.lWiki.TabStop = true;
+			this.lWiki.Text = "╚ Wiki";
+			this.lWiki.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lWiki_LinkClicked);
+			// 
+			// lWhitelist
+			// 
+			this.lWhitelist.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+			this.lWhitelist.AutoSize = true;
+			this.lWhitelist.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lWhitelist.LinkColor = System.Drawing.Color.White;
+			this.lWhitelist.Location = new System.Drawing.Point(35, 197);
+			this.lWhitelist.Name = "lWhitelist";
+			this.lWhitelist.Size = new System.Drawing.Size(65, 16);
+			this.lWhitelist.TabIndex = 3;
+			this.lWhitelist.TabStop = true;
+			this.lWhitelist.Text = "╚ Whitelist";
+			this.lWhitelist.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lWhitelist_LinkClicked);
+			// 
+			// lTSSync
+			// 
+			this.lTSSync.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+			this.lTSSync.AutoSize = true;
+			this.lTSSync.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lTSSync.LinkColor = System.Drawing.Color.White;
+			this.lTSSync.Location = new System.Drawing.Point(35, 137);
+			this.lTSSync.Name = "lTSSync";
+			this.lTSSync.Size = new System.Drawing.Size(58, 16);
+			this.lTSSync.TabIndex = 2;
+			this.lTSSync.TabStop = true;
+			this.lTSSync.Text = "╚ TS Sync";
+			this.lTSSync.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lTSSync_LinkClicked);
+			// 
+			// lBoard
+			// 
+			this.lBoard.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+			this.lBoard.AutoSize = true;
+			this.lBoard.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lBoard.LinkColor = System.Drawing.Color.White;
+			this.lBoard.Location = new System.Drawing.Point(35, 77);
+			this.lBoard.Name = "lBoard";
+			this.lBoard.Size = new System.Drawing.Size(53, 16);
+			this.lBoard.TabIndex = 1;
+			this.lBoard.TabStop = true;
+			this.lBoard.Text = "╚ Forum";
+			this.lBoard.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lBoard_LinkClicked);
+			// 
+			// lblQuickAccess
+			// 
+			this.lblQuickAccess.AutoSize = true;
+			this.lblQuickAccess.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblQuickAccess.ForeColor = System.Drawing.Color.White;
+			this.lblQuickAccess.Location = new System.Drawing.Point(12, 17);
+			this.lblQuickAccess.Name = "lblQuickAccess";
+			this.lblQuickAccess.Size = new System.Drawing.Size(111, 19);
+			this.lblQuickAccess.TabIndex = 0;
+			this.lblQuickAccess.Text = "Schnellzugriff";
 			// 
 			// MainWindow
 			// 
