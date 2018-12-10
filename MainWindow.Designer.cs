@@ -46,6 +46,9 @@
 			this.lTSSync = new System.Windows.Forms.LinkLabel();
 			this.lBoard = new System.Windows.Forms.LinkLabel();
 			this.lblQuickAccess = new System.Windows.Forms.Label();
+			this.lblNewsHead = new System.Windows.Forms.Label();
+			this.lblNewsText = new System.Windows.Forms.Label();
+			this.lblSettings = new System.Windows.Forms.Label();
 			this.pTitleBar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbHeader)).BeginInit();
 			this.pSidebar.SuspendLayout();
@@ -56,6 +59,7 @@
 			this.pTitleBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.pTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+			this.pTitleBar.Controls.Add(this.lblSettings);
 			this.pTitleBar.Controls.Add(this.lblClose);
 			this.pTitleBar.Controls.Add(this.lblMinimize);
 			this.pTitleBar.Controls.Add(this.lblName);
@@ -280,12 +284,51 @@
 			this.lblQuickAccess.TabIndex = 0;
 			this.lblQuickAccess.Text = "Schnellzugriff";
 			// 
+			// lblNewsHead
+			// 
+			this.lblNewsHead.AutoSize = true;
+			this.lblNewsHead.Font = new System.Drawing.Font("Bahnschrift", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblNewsHead.ForeColor = System.Drawing.Color.White;
+			this.lblNewsHead.Location = new System.Drawing.Point(229, 179);
+			this.lblNewsHead.Name = "lblNewsHead";
+			this.lblNewsHead.Size = new System.Drawing.Size(687, 33);
+			this.lblNewsHead.TabIndex = 5;
+			this.lblNewsHead.Text = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.";
+			// 
+			// lblNewsText
+			// 
+			this.lblNewsText.AutoSize = true;
+			this.lblNewsText.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblNewsText.ForeColor = System.Drawing.Color.White;
+			this.lblNewsText.Location = new System.Drawing.Point(232, 216);
+			this.lblNewsText.MaximumSize = new System.Drawing.Size(800, 160);
+			this.lblNewsText.Name = "lblNewsText";
+			this.lblNewsText.Size = new System.Drawing.Size(792, 160);
+			this.lblNewsText.TabIndex = 6;
+			this.lblNewsText.Text = resources.GetString("lblNewsText.Text");
+			// 
+			// lblSettings
+			// 
+			this.lblSettings.AutoSize = true;
+			this.lblSettings.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblSettings.ForeColor = System.Drawing.Color.White;
+			this.lblSettings.Location = new System.Drawing.Point(1002, 4);
+			this.lblSettings.Name = "lblSettings";
+			this.lblSettings.Size = new System.Drawing.Size(19, 13);
+			this.lblSettings.TabIndex = 3;
+			this.lblSettings.Text = "✎";
+			this.lblSettings.MouseEnter += new System.EventHandler(this.itemHoverStart);
+			this.lblSettings.MouseLeave += new System.EventHandler(this.itemHoverEnd);
+			this.lblSettings.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblSettings_MouseUp);
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
 			this.ClientSize = new System.Drawing.Size(1062, 493);
+			this.Controls.Add(this.lblNewsText);
+			this.Controls.Add(this.lblNewsHead);
 			this.Controls.Add(this.pSidebar);
 			this.Controls.Add(this.btnStartGame);
 			this.Controls.Add(this.lServer);
@@ -324,6 +367,9 @@
 		private System.Windows.Forms.LinkLabel lTSSync;
 		private System.Windows.Forms.LinkLabel lBoard;
 		private System.Windows.Forms.Label lblQuickAccess;
+		private System.Windows.Forms.Label lblSettings;
+		private System.Windows.Forms.Label lblNewsHead;
+		private System.Windows.Forms.Label lblNewsText;
 	}
 }
 
