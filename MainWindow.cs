@@ -59,8 +59,7 @@ namespace MyVMP_Launcher
 
 		private void lTSConnect_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			string tsLink = string.Format("{0}?nickname={1}", Data.Links.TSAddress, Data.GVMP.UserName);
-			Process.Start(tsLink);
+			Process.Start(string.Format("{0}?nickname={1}", Data.Links.TSAddress, Data.GVMP.UserName));
 		}
 
 		private void lUCP_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -76,6 +75,11 @@ namespace MyVMP_Launcher
 		private void lWiki_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
 			Process.Start(Data.Links.Wiki);
+		}
+
+		private void lblSettings_MouseUp(object sender, MouseEventArgs e)
+		{
+			itemHoverEnd(sender, null);
 		}
 	}
 }
