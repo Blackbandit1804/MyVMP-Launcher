@@ -18,35 +18,49 @@ namespace MyVMP_Launcher.Data
 
 		static void CheckGVMPClient()
 		{
-			Helper.Logging.Log("Checking GVMP-Client");
-			string currentHash, webHash = null;
-			using (MD5 mD = MD5.Create())
+			try
 			{
-				using (FileStream fileStream = new FileStream(string.Format("{0}gvmp/client.js", RAGE.ClientResources), FileMode.Open))
+				Helper.Logging.Log("Checking GVMP-Client");
+				string currentHash, webHash = null;
+				using (MD5 mD = MD5.Create())
 				{
-					fileStream.Position = 0L;
-					currentHash = BitConverter.ToString(mD.ComputeHash(fileStream)).Replace("-", "").ToUpperInvariant();
+					using (FileStream fileStream = new FileStream(string.Format("{0}gvmp/client.js", RAGE.ClientResources), FileMode.Open))
+					{
+						fileStream.Position = 0L;
+						currentHash = BitConverter.ToString(mD.ComputeHash(fileStream)).Replace("-", "").ToUpperInvariant();
+					}
 				}
+				webHash = Client.DownloadString(ClientURL);
+				if(currentHash != webHash)
+					Download("gvmp_client.zip", "client");
 			}
-			webHash = Client.DownloadString(ClientURL);
-			if(currentHash != webHash)
-				Download("gvmp_client.zip", "client");
+			catch (Exception ex)
+			{
+				Helper.Logging.Log(string.Format("Fehler: {0}", ex.Message), "error");
+			}
 		}
 
 		static void DeleteGVMPClient()
 		{
-			DirectoryInfo di = new DirectoryInfo(string.Format("{0}gvmp", RAGE.ClientResources));
-			Helper.Logging.Log("Removing old client");
-			File.Delete(string.Format("{0}index.js", RAGE.ClientResources));
-			foreach (FileInfo file in di.GetFiles())
+			try
 			{
-				file.Delete();
+				DirectoryInfo di = new DirectoryInfo(string.Format("{0}gvmp", RAGE.ClientResources));
+				Helper.Logging.Log("Removing old client");
+				File.Delete(string.Format("{0}index.js", RAGE.ClientResources));
+				foreach (FileInfo file in di.GetFiles())
+				{
+					file.Delete();
+				}
+				foreach (DirectoryInfo dir in di.GetDirectories())
+				{
+					dir.Delete(true);
+				}
+				Helper.Logging.Log("All client files removed");
 			}
-			foreach (DirectoryInfo dir in di.GetDirectories())
+			catch (Exception ex)
 			{
-				dir.Delete(true);
+				Helper.Logging.Log(string.Format("Fehler: {0}", ex.Message), "error");
 			}
-			Helper.Logging.Log("All client files removed");
 		}
 
 		/// <summary>
