@@ -2,32 +2,85 @@
 using System.IO;
 using System.Net;
 using System.Security.Cryptography;
+using System.IO.Compression;
 using Microsoft.Win32;
 using Newtonsoft.Json.Linq;
 
 namespace MyVMP_Launcher.Data
 {
-    public static class GVMP
+	public static class GVMP
     {
         const string PatchURL = "http://server1.gvmp.de:5000/api/patching";
         const string LiveURL = "http://launcher.gvmp.de/live/";
+		const string ClientURL = "http://launcher.gvmp.de/client_hash.txt";
 		public static string UserName { get; private set; } = string.Empty;
         static WebClient Client = new WebClient();
 
-		/// <summary>
-		/// Downloads the given DLC
-		/// </summary>
-		/// <param name="FileName">Name of the DLC</param>
-        static void Download(string FileName, string type)
-        {
-			switch(type)
+		static void CheckGVMPClient()
+		{
+			Helper.Logging.Log("Checking GVMP-Client");
+			string currentHash, webHash = null;
+			using (MD5 mD = MD5.Create())
 			{
+				using (FileStream fileStream = new FileStream(string.Format("{0}gvmp/client.js", RAGE.ClientResources), FileMode.Open))
+				{
+					fileStream.Position = 0L;
+					currentHash = BitConverter.ToString(mD.ComputeHash(fileStream)).Replace("-", "").ToUpperInvariant();
+				}
+			}
+			webHash = Client.DownloadString(ClientURL);
+			if(currentHash != webHash)
+				Download("gvmp_client.zip", "client");
+		}
+
+		static void DeleteGVMPClient()
+		{
+			DirectoryInfo di = new DirectoryInfo(string.Format("{0}gvmp", RAGE.ClientResources));
+			Helper.Logging.Log("Removing old client");
+			File.Delete(string.Format("{0}index.js", RAGE.ClientResources));
+			foreach (FileInfo file in di.GetFiles())
+			{
+				file.Delete();
+			}
+			foreach (DirectoryInfo dir in di.GetDirectories())
+			{
+				dir.Delete(true);
+			}
+			Helper.Logging.Log("All client files removed");
+		}
+
+		/// <summary>
+		/// Downloads the given Client/DLC
+		/// </summary>
+		/// <param name="FileName">Name of the Client/DLC</param>
+		/// <param name="Type"></param>
+        static void Download(string FileName, string Type)
+        {
+			switch(Type)
+			{
+				case "client":
+					try
+					{
+						Helper.Logging.Log("Downloading new GVMP-Client");
+						Client.DownloadFile(string.Format("{0}{1}", LiveURL, FileName), string.Format("{0}{1}", RAGE.ClientResources, FileName));
+
+						DeleteGVMPClient();
+
+						Helper.Logging.Log("Client-Download finished, now extracting");
+						ZipFile.ExtractToDirectory(string.Format("{0}{1}", RAGE.ClientResources, FileName), RAGE.ClientResources);
+						Helper.Logging.Log("Extraction finished");
+					}
+					catch (Exception ex)
+					{
+						Helper.Logging.Log(string.Format("Fehler: {0}", ex.Message), "error");
+					}
+					break;
 				case "dlc":
 					try
 					{
 						Helper.Logging.Log(string.Format("Downloading DLC: {0}", FileName));
 						Client.DownloadFile(string.Format("{0}{1}/dlc.rpf", LiveURL, FileName), string.Format("{0}{1}/dlc.rpf", RAGE.DLCPacks, FileName));
-						Helper.Logging.Log(string.Format("Downloading of DLC: {0} finished", FileName));
+						Helper.Logging.Log(string.Format("Downloading of DLC {0} finished", FileName));
 					}
 					catch (Exception ex)
 					{
@@ -96,6 +149,7 @@ namespace MyVMP_Launcher.Data
 			{
 				Helper.Logging.Log(ex.Message);
 			}
+			CheckGVMPClient();
 			Helper.Logging.Log("Checking DLC's");
             string json = Client.DownloadString(PatchURL);
             JObject results = JObject.Parse(json);
