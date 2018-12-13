@@ -11,11 +11,8 @@ namespace MyVMP_Launcher
         [STAThread]
         static void Main()
         {
-            Console.Title = "MyVMP - Debug (Nicht schließen)";
+            Console.Title = "MyVMP-Debug (Nicht schließen)";
             Helper.Logging.Log("Application start initiated");
-            Data.GTA5.Init();
-            Data.RAGE.Init();
-            Data.GVMP.Init();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Helper.Logging.Log("Application start finished");
