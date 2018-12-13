@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -226,6 +227,20 @@ namespace MyVMP_Launcher
 				ReleaseCapture();
 				SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
 			}
+		}
+
+		private void StartGVMP(object sender, EventArgs e)
+		{
+			RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("Software\\RAGE-MP", true);
+			registryKey.SetValue("launch.ip", Data.GVMP.ServerIP);
+			registryKey.SetValue("launch.port", Data.GVMP.ServerPort);
+			registryKey.SetValue("player_name", Data.GVMP.UserName);
+			registryKey.Close();
+
+			ProcessStartInfo psi = new ProcessStartInfo();
+			psi.WorkingDirectory = Data.RAGE.Base;
+			psi.FileName = "ragemp_v.exe";
+			Process.Start(psi);
 		}
 	}
 }

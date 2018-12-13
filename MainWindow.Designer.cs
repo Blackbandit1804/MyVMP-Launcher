@@ -182,6 +182,7 @@
 			this.btnStartGame.Text = "Spielen";
 			this.btnStartGame.UseVisualStyleBackColor = false;
 			this.btnStartGame.Visible = false;
+			this.btnStartGame.Click += new System.EventHandler(this.StartGVMP);
 			// 
 			// pSidebar
 			// 
