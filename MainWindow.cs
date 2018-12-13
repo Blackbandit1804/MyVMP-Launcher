@@ -27,24 +27,20 @@ namespace MyVMP_Launcher
 		void GatherData()
 		{
 			Data.GTA5.Init();
-			Invoke((MethodInvoker)delegate
-			{
-				tbGTA.Text = Data.GTA5.Base;
-			});
 			Data.RAGE.Init();
-			Invoke((MethodInvoker)delegate
-			{
-				tbName.Text = Data.GVMP.UserName;
-				tbRAGE.Text = Data.RAGE.Base;
-			});
 			Data.GVMP.GetPlayerName();
 			Invoke((MethodInvoker)delegate
 			{
+				tbRAGE.Text = Data.RAGE.Base;
+				tbGTA.Text = Data.GTA5.Base;
 				tbName.Text = Data.GVMP.UserName;
+			});
+			Data.GVMP.Init();
+			Invoke((MethodInvoker)delegate
+			{
 				btnStartGame.Visible = true;
 				btnPleaseWait.Visible = false;
 			});
-			Data.GVMP.Init();
 		}
 
 		void ToggleWidth()
