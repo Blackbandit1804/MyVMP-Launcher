@@ -98,22 +98,30 @@ namespace MyVMP_Launcher.Data
 					}
 					catch (Exception ex)
 					{
-						if (Convert.ToInt32(FileName) == 0)
+						try
 						{
-							Helper.Logging.Log(string.Format("Fehler beim Download der Datei: {0}{1}/dlc.rpf", LiveURL, FileName), "error");
-							Helper.Logging.Log(string.Format("Fehler: {0}", ex.Message), "error");
+							if (Convert.ToInt32(FileName) == 0)
+							{
+								Helper.Logging.Log(string.Format("Fehler beim Download der Datei: {0}{1}/dlc.rpf", LiveURL, FileName), "error");
+								Helper.Logging.Log(string.Format("Fehler: {0}", ex.Message), "error");
+							}
+							else
+							{
+								Helper.Logging.Log(string.Format("Could not download DLC {0}. It looks like the Updater and can be ignored... maybe...", FileName), "warning");
+								try
+								{
+									Directory.Delete(string.Format("{0}{1}", RAGE.DLCPacks, FileName));
+								}
+								catch (Exception e)
+								{
+									Helper.Logging.Log(string.Format("Fehler: {0}", e.Message), "error");
+								}
+							}
 						}
-						else
+						catch (Exception e)
 						{
-							Helper.Logging.Log(string.Format("Could not download DLC {0}. It looks like the Updater and can be ignored... maybe...", FileName), "warning");
-							try
-							{
-								Directory.Delete(string.Format("{0}{1}", RAGE.DLCPacks, FileName));
-							}
-							catch (Exception e)
-							{
-								Helper.Logging.Log(string.Format("Fehler: {0}", e.Message), "error");
-							}
+							Helper.Logging.Log(string.Format("Could not download DLC {0}", FileName), "error");
+							Helper.Logging.Log(string.Format("Error Message: {0}", ex.Message), "error");
 						}
 					}
 					break;
@@ -135,7 +143,7 @@ namespace MyVMP_Launcher.Data
 					MD5 md5 = MD5.Create();
 					FileStream stream = File.OpenRead(string.Format("{0}{1}/dlc.rpf", RAGE.DLCPacks, FileName));
 					stream.Position = 0L;
-					string fileHash = BitConverter.ToString(md5.ComputeHash((Stream)stream)).Replace("-", "").ToLowerInvariant();
+					string fileHash = BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", "").ToLowerInvariant();
 					stream.Close();
 					return fileHash == Hash;
 				}
@@ -153,16 +161,6 @@ namespace MyVMP_Launcher.Data
 		/// </summary>
         public static void Init()
         {
-			Helper.Logging.Log("Getting PlayerName");
-			try
-			{
-				RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("Software\\RAGE-MP");
-				UserName = (string)registryKey.GetValue("player_name");
-			}
-			catch (Exception ex)
-			{
-				Helper.Logging.Log(ex.Message);
-			}
 			CheckGVMPClient();
 			Helper.Logging.Log("Checking DLC's");
             string json = Client.DownloadString(PatchURL);
@@ -190,5 +188,35 @@ namespace MyVMP_Launcher.Data
 				}
             }
         }
-    }
+
+		public static void GetPlayerName()
+		{
+			Helper.Logging.Log("Getting PlayerName");
+			try
+			{
+				RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("Software\\RAGE-MP");
+				UserName = (string)registryKey.GetValue("player_name");
+			}
+			catch (Exception ex)
+			{
+				Helper.Logging.Log(ex.Message);
+			}
+		}
+
+		public static void SetPlayerName(string name)
+		{
+			Helper.Logging.Log("Trying to set PlayerName");
+			try
+			{
+				RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("Software\\RAGE-MP");
+				registryKey.SetValue("player_name", name, RegistryValueKind.String);
+				UserName = name;
+				Helper.Logging.Log(string.Format("PlayerName successfully set to", UserName));
+			}
+			catch (Exception ex)
+			{
+				Helper.Logging.Log(ex.Message);
+			}
+		}
+	}
 }
