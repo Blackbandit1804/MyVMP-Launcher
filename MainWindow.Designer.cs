@@ -143,9 +143,9 @@
 			this.lblName.ForeColor = System.Drawing.Color.White;
 			this.lblName.Location = new System.Drawing.Point(18, 4);
 			this.lblName.Name = "lblName";
-			this.lblName.Size = new System.Drawing.Size(91, 13);
+			this.lblName.Size = new System.Drawing.Size(250, 13);
 			this.lblName.TabIndex = 0;
-			this.lblName.Text = "MyVMP Launcher";
+			this.lblName.Text = "MyVMP Launcher (Der inoffizielle GVMP Launcher)";
 			// 
 			// pbHeader
 			// 
