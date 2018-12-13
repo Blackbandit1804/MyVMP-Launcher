@@ -10,11 +10,14 @@ namespace MyVMP_Launcher.Data
 {
 	public static class GVMP
     {
-        const string PatchURL = "http://server1.gvmp.de:5000/api/patching";
+		public static string UserName { get; private set; } = string.Empty;
+		public static string ServerIP { get; private set; } = "145.239.149.95";
+		public static string ServerPort { get; private set; } = "22005";
+
+		const string PatchURL = "http://server1.gvmp.de:5000/api/patching";
         const string LiveURL = "http://launcher.gvmp.de/live/";
 		const string ClientURL = "http://launcher.gvmp.de/client_hash.txt";
-		public static string UserName { get; private set; } = string.Empty;
-        static WebClient Client = new WebClient();
+		static WebClient Client = new WebClient();
 
 		static void CheckGVMPClient()
 		{
@@ -208,7 +211,7 @@ namespace MyVMP_Launcher.Data
 			Helper.Logging.Log("Trying to set PlayerName");
 			try
 			{
-				RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("Software\\RAGE-MP");
+				RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("Software\\RAGE-MP", true);
 				registryKey.SetValue("player_name", name, RegistryValueKind.String);
 				UserName = name;
 				Helper.Logging.Log(string.Format("PlayerName successfully set to", UserName));
