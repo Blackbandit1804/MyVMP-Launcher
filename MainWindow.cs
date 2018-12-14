@@ -239,7 +239,7 @@ namespace MyVMP_Launcher
 
 			ProcessStartInfo psi = new ProcessStartInfo();
 			psi.WorkingDirectory = Data.RAGE.Base;
-			psi.FileName = "ragemp_v.exe";
+			psi.FileName = string.Format("rage://v/connect?ip={0}:{1}", Data.GVMP.ServerIP, Data.GVMP.ServerPort);
 			Process.Start(psi);
 		}
 	}
