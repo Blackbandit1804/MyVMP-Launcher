@@ -11,12 +11,14 @@ namespace MyVMP_Launcher.Data
 	public static class GVMP
     {
 		public static string UserName { get; private set; } = string.Empty;
+		public static string BoardID { get; private set; } = string.Empty;
 		public static string ServerIP { get; private set; } = "145.239.149.95";
 		public static string ServerPort { get; private set; } = "22005";
 
 		const string PatchURL = "http://server1.gvmp.de:5000/api/patching";
         const string LiveURL = "http://launcher.gvmp.de/live/";
 		const string ClientURL = "http://launcher.gvmp.de/client_hash.txt";
+		public const string WhitelistURL = "http://server1.gvmp.de:5000/api/account";
 		static WebClient Client = new WebClient();
 
 		static void CheckGVMPClient()
@@ -192,7 +194,7 @@ namespace MyVMP_Launcher.Data
             }
         }
 
-		public static void GetPlayerName()
+		public static void GetPlayerData()
 		{
 			Helper.Logging.Log("Getting PlayerName");
 			try
@@ -204,17 +206,29 @@ namespace MyVMP_Launcher.Data
 			{
 				Helper.Logging.Log(ex.Message);
 			}
+			Helper.Logging.Log("Getting player BoardID");
+			try
+			{
+				RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("Software\\RAGE-MP");
+				BoardID = (string)registryKey.GetValue("board_id");
+			}
+			catch (Exception ex)
+			{
+				Helper.Logging.Log(ex.Message);
+			}
 		}
 
-		public static void SetPlayerName(string name)
+		public static void SetPlayerData(string name, string boardid)
 		{
 			Helper.Logging.Log("Trying to set PlayerName");
 			try
 			{
 				RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("Software\\RAGE-MP", true);
 				registryKey.SetValue("player_name", name, RegistryValueKind.String);
+				registryKey.SetValue("board_id", boardid, RegistryValueKind.String);
 				UserName = name;
-				Helper.Logging.Log(string.Format("PlayerName successfully set to", UserName));
+				BoardID = boardid;
+				Helper.Logging.Log("PlayerData successfully written", UserName);
 			}
 			catch (Exception ex)
 			{
