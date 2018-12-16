@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -29,12 +30,13 @@ namespace MyVMP_Launcher
 		{
 			Data.GTA5.Init();
 			Data.RAGE.Init();
-			Data.GVMP.GetPlayerName();
+			Data.GVMP.GetPlayerData();
 			Invoke((MethodInvoker)delegate
 			{
 				tbRAGE.Text = Data.RAGE.Base;
 				tbGTA.Text = Data.GTA5.Base;
 				tbName.Text = Data.GVMP.UserName;
+				tbBoardID.Text = Data.GVMP.BoardID;
 			});
 			Data.GVMP.Init();
 			Invoke((MethodInvoker)delegate
@@ -164,8 +166,8 @@ namespace MyVMP_Launcher
 			}
 			else
 			{
-				Data.GVMP.SetPlayerName(tbName.Text);
-				MessageBox.Show("Der Spielername wurde erfolgreich gespeichert", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+				Data.GVMP.SetPlayerData(tbName.Text, tbBoardID.Text);
+				MessageBox.Show("Die Spielerdaten wurden erfolgreich gespeichert", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
 				isToggleActive = true;
 				tToggle = new Thread(new ThreadStart(ToggleWidth));
 				tToggle.Start();
@@ -231,16 +233,43 @@ namespace MyVMP_Launcher
 
 		private void StartGVMP(object sender, EventArgs e)
 		{
-			RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("Software\\RAGE-MP", true);
-			registryKey.SetValue("launch.ip", Data.GVMP.ServerIP);
-			registryKey.SetValue("launch.port", Data.GVMP.ServerPort);
-			registryKey.SetValue("player_name", Data.GVMP.UserName);
-			registryKey.Close();
+			if (string.IsNullOrWhiteSpace(Data.GVMP.UserName))
+			{
+				MessageBox.Show("Es wurde noch kein Inselname angegeben", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				ToggleSettings(sender, e);
+				tbName.Focus();
+			}
+			else if (string.IsNullOrWhiteSpace(Data.GVMP.BoardID))
+			{
+				MessageBox.Show("Es wurde noch keine ForenID angegeben", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				ToggleSettings(sender, e);
+				tbBoardID.Focus();
+			}
+			else
+			{
+				try
+				{
+					System.Net.WebClient Client = new System.Net.WebClient();
+					Client.Encoding = System.Text.Encoding.UTF8;
+					Client.Headers["Content-Type"] = "application/json";
+					API.Whitelist Whitelist = new API.Whitelist();
+					Whitelist.m_AccountData = string.Format("{0}:{1}", Data.GVMP.BoardID, Data.GVMP.UserName);
+					string responseData = Client.UploadString(Data.GVMP.WhitelistURL, JsonConvert.SerializeObject(Whitelist));
 
-			ProcessStartInfo psi = new ProcessStartInfo();
-			psi.WorkingDirectory = Data.RAGE.Base;
-			psi.FileName = string.Format("rage://v/connect?ip={0}:{1}", Data.GVMP.ServerIP, Data.GVMP.ServerPort);
-			Process.Start(psi);
+					ProcessStartInfo psi = new ProcessStartInfo();
+					psi.WorkingDirectory = Data.RAGE.Base;
+					psi.FileName = string.Format("rage://v/connect?ip={0}:{1}", Data.GVMP.ServerIP, Data.GVMP.ServerPort);
+					Process.Start(psi);
+
+					if (Width == 1262)
+						ToggleSettings(sender, e);
+				}
+				catch (Exception ex)
+				{
+					Helper.Logging.Log(ex.Message, "error");
+					MessageBox.Show("RAGEMP konnte nicht gestartet werden, weitere Infos findest du im Log.", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
 		}
 	}
 }
