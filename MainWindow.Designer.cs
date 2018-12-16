@@ -51,7 +51,7 @@
 			this.lblNewsHead = new System.Windows.Forms.Label();
 			this.lblNewsText = new System.Windows.Forms.Label();
 			this.pSettingsSpacer = new System.Windows.Forms.Panel();
-			this.label1 = new System.Windows.Forms.Label();
+			this.lblIslandname = new System.Windows.Forms.Label();
 			this.tbName = new System.Windows.Forms.TextBox();
 			this.tbGTA = new System.Windows.Forms.TextBox();
 			this.lblGTAPath = new System.Windows.Forms.Label();
@@ -61,6 +61,8 @@
 			this.btnPleaseWait = new System.Windows.Forms.Button();
 			this.btnSearchGTA = new System.Windows.Forms.Button();
 			this.btnSearchRage = new System.Windows.Forms.Button();
+			this.tbBoardID = new System.Windows.Forms.TextBox();
+			this.lblBoardID = new System.Windows.Forms.Label();
 			this.pTitleBar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbHeader)).BeginInit();
 			this.pSidebar.SuspendLayout();
@@ -357,16 +359,16 @@
 			this.pSettingsSpacer.Size = new System.Drawing.Size(1, 493);
 			this.pSettingsSpacer.TabIndex = 7;
 			// 
-			// label1
+			// lblIslandname
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.ForeColor = System.Drawing.Color.White;
-			this.label1.Location = new System.Drawing.Point(1075, 29);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(56, 19);
-			this.label1.TabIndex = 9;
-			this.label1.Text = "Name:";
+			this.lblIslandname.AutoSize = true;
+			this.lblIslandname.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblIslandname.ForeColor = System.Drawing.Color.White;
+			this.lblIslandname.Location = new System.Drawing.Point(1075, 29);
+			this.lblIslandname.Name = "lblIslandname";
+			this.lblIslandname.Size = new System.Drawing.Size(89, 19);
+			this.lblIslandname.TabIndex = 9;
+			this.lblIslandname.Text = "Inselname:";
 			// 
 			// tbName
 			// 
@@ -386,7 +388,7 @@
 			this.tbGTA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.tbGTA.Font = new System.Drawing.Font("Bahnschrift Condensed", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tbGTA.ForeColor = System.Drawing.Color.White;
-			this.tbGTA.Location = new System.Drawing.Point(1079, 128);
+			this.tbGTA.Location = new System.Drawing.Point(1079, 180);
 			this.tbGTA.MaxLength = 32;
 			this.tbGTA.Name = "tbGTA";
 			this.tbGTA.ReadOnly = true;
@@ -398,7 +400,7 @@
 			this.lblGTAPath.AutoSize = true;
 			this.lblGTAPath.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblGTAPath.ForeColor = System.Drawing.Color.White;
-			this.lblGTAPath.Location = new System.Drawing.Point(1075, 106);
+			this.lblGTAPath.Location = new System.Drawing.Point(1075, 158);
 			this.lblGTAPath.Name = "lblGTAPath";
 			this.lblGTAPath.Size = new System.Drawing.Size(90, 19);
 			this.lblGTAPath.TabIndex = 11;
@@ -410,7 +412,7 @@
 			this.tbRAGE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.tbRAGE.Font = new System.Drawing.Font("Bahnschrift Condensed", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tbRAGE.ForeColor = System.Drawing.Color.White;
-			this.tbRAGE.Location = new System.Drawing.Point(1079, 182);
+			this.tbRAGE.Location = new System.Drawing.Point(1079, 234);
 			this.tbRAGE.MaxLength = 32;
 			this.tbRAGE.Name = "tbRAGE";
 			this.tbRAGE.ReadOnly = true;
@@ -422,7 +424,7 @@
 			this.lblRageMPPath.AutoSize = true;
 			this.lblRageMPPath.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblRageMPPath.ForeColor = System.Drawing.Color.White;
-			this.lblRageMPPath.Location = new System.Drawing.Point(1075, 160);
+			this.lblRageMPPath.Location = new System.Drawing.Point(1075, 212);
 			this.lblRageMPPath.Name = "lblRageMPPath";
 			this.lblRageMPPath.Size = new System.Drawing.Size(116, 19);
 			this.lblRageMPPath.TabIndex = 13;
@@ -435,7 +437,7 @@
 			this.btnSaveSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnSaveSettings.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnSaveSettings.ForeColor = System.Drawing.Color.White;
-			this.btnSaveSettings.Location = new System.Drawing.Point(1165, 80);
+			this.btnSaveSettings.Location = new System.Drawing.Point(1165, 132);
 			this.btnSaveSettings.Name = "btnSaveSettings";
 			this.btnSaveSettings.Size = new System.Drawing.Size(85, 23);
 			this.btnSaveSettings.TabIndex = 15;
@@ -465,7 +467,7 @@
 			this.btnSearchGTA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnSearchGTA.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnSearchGTA.ForeColor = System.Drawing.Color.White;
-			this.btnSearchGTA.Location = new System.Drawing.Point(1227, 128);
+			this.btnSearchGTA.Location = new System.Drawing.Point(1227, 180);
 			this.btnSearchGTA.Name = "btnSearchGTA";
 			this.btnSearchGTA.Size = new System.Drawing.Size(23, 23);
 			this.btnSearchGTA.TabIndex = 17;
@@ -480,7 +482,7 @@
 			this.btnSearchRage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnSearchRage.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnSearchRage.ForeColor = System.Drawing.Color.White;
-			this.btnSearchRage.Location = new System.Drawing.Point(1227, 182);
+			this.btnSearchRage.Location = new System.Drawing.Point(1227, 234);
 			this.btnSearchRage.Name = "btnSearchRage";
 			this.btnSearchRage.Size = new System.Drawing.Size(23, 23);
 			this.btnSearchRage.TabIndex = 18;
@@ -488,12 +490,37 @@
 			this.btnSearchRage.UseVisualStyleBackColor = false;
 			this.btnSearchRage.Click += new System.EventHandler(this.SearchRAGE);
 			// 
+			// tbBoardID
+			// 
+			this.tbBoardID.BackColor = System.Drawing.Color.DimGray;
+			this.tbBoardID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.tbBoardID.Font = new System.Drawing.Font("Bahnschrift Condensed", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbBoardID.ForeColor = System.Drawing.Color.White;
+			this.tbBoardID.Location = new System.Drawing.Point(1079, 103);
+			this.tbBoardID.MaxLength = 32;
+			this.tbBoardID.Name = "tbBoardID";
+			this.tbBoardID.Size = new System.Drawing.Size(171, 23);
+			this.tbBoardID.TabIndex = 20;
+			// 
+			// lblBoardID
+			// 
+			this.lblBoardID.AutoSize = true;
+			this.lblBoardID.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblBoardID.ForeColor = System.Drawing.Color.White;
+			this.lblBoardID.Location = new System.Drawing.Point(1075, 81);
+			this.lblBoardID.Name = "lblBoardID";
+			this.lblBoardID.Size = new System.Drawing.Size(84, 19);
+			this.lblBoardID.TabIndex = 19;
+			this.lblBoardID.Text = "Forum-ID:";
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
 			this.ClientSize = new System.Drawing.Size(1062, 493);
+			this.Controls.Add(this.tbBoardID);
+			this.Controls.Add(this.lblBoardID);
 			this.Controls.Add(this.btnSearchRage);
 			this.Controls.Add(this.btnSearchGTA);
 			this.Controls.Add(this.btnPleaseWait);
@@ -503,7 +530,7 @@
 			this.Controls.Add(this.tbGTA);
 			this.Controls.Add(this.lblGTAPath);
 			this.Controls.Add(this.tbName);
-			this.Controls.Add(this.label1);
+			this.Controls.Add(this.lblIslandname);
 			this.Controls.Add(this.pSettingsSpacer);
 			this.Controls.Add(this.lblNewsText);
 			this.Controls.Add(this.lblNewsHead);
@@ -552,7 +579,7 @@
 		private System.Windows.Forms.Label lblNewsText;
 		private System.Windows.Forms.Panel pSettingsSpacer;
 		private System.Windows.Forms.Label lblSettingsPannel;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label lblIslandname;
 		private System.Windows.Forms.TextBox tbName;
 		private System.Windows.Forms.TextBox tbGTA;
 		private System.Windows.Forms.Label lblGTAPath;
@@ -562,6 +589,8 @@
 		private System.Windows.Forms.Button btnPleaseWait;
 		private System.Windows.Forms.Button btnSearchGTA;
 		private System.Windows.Forms.Button btnSearchRage;
+		private System.Windows.Forms.TextBox tbBoardID;
+		private System.Windows.Forms.Label lblBoardID;
 	}
 }
 
