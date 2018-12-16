@@ -55,7 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API\GVMP-Board.cs" />
+    <Compile Include="API\Whitelist.cs" />
     <Compile Include="Data\GTA5.cs" />
     <Compile Include="Data\GVMP.cs" />
     <Compile Include="Data\Links.cs" />
